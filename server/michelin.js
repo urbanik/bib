@@ -8,10 +8,28 @@ const cheerio = require('cheerio');
  */
 const parse = data => {
   const $ = cheerio.load(data);
-  const name = $('.section-main h2.restaurant-details__heading--title').text();
-  const experience = $('#experience-section > ul > li:nth-child(2)').text();
+  var dict = [];
+  var pages_display = $('div.js-restaurant__stats > h1:nth-child(1) > span:nth-child(1)').text();
+  var split_pages = pages_display.split("-");
+  var pages = split_pages[1] - split_pages[0];
+  for (j = 1; j <= pages + 1; j++) {
+    if (j != 21) {
+      var temp_str = $('div.col-md-6:nth-child(' + j + ') > div:nth-child(1) > div:nth-child(2) > h5:nth-child(2) > a:nth-child(1)').text();
+      temp_str = temp_str.substring(17);
+      temp_index = temp_str.indexOf('\n');
+      temp_str = temp_str.substring(0, temp_index);
+      if (temp_str != "") {
+        dict.push({
+          name: temp_str
+          //url : $('div.col-md-6:nth-child(5) > div:nth-child(1) > a:nth-child(4)').text();
+        });
+      }
+    }
+  }
+  return {
+    dict
+  };
 
-  return {name, experience};
 };
 
 /**
@@ -21,7 +39,10 @@ const parse = data => {
  */
 module.exports.scrapeRestaurant = async url => {
   const response = await axios(url);
-  const {data, status} = response;
+  const {
+    data,
+    status
+  } = response;
 
   if (status >= 200 && status < 300) {
     return parse(data);
