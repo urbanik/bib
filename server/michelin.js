@@ -6,6 +6,7 @@ const cheerio = require('cheerio');
  * @param  {String} data - html response
  * @return {Object} restaurant
  */
+
 const parse = data => {
   const $ = cheerio.load(data);
   var dict = [];
@@ -21,7 +22,6 @@ const parse = data => {
       if (temp_str != "") {
         dict.push({
           name: temp_str
-          //url : $('div.col-md-6:nth-child(5) > div:nth-child(1) > a:nth-child(4)').text();
         });
       }
     }
@@ -37,6 +37,7 @@ const parse = data => {
  * @param  {String}  url
  * @return {Object} restaurant
  */
+
 module.exports.scrapeRestaurant = async url => {
   const response = await axios(url);
   const {
@@ -57,6 +58,7 @@ module.exports.scrapeRestaurant = async url => {
  * Get all France located Bib Gourmand restaurants
  * @return {Array} restaurants
  */
+
 module.exports.get = () => {
   return [];
 };

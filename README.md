@@ -216,7 +216,7 @@ Next features could be:
 
 ## 🍽 Scraping Example
 
-[server/michelin.js](./server/michelin.js) contains a function to scrape a given Michelin restaurant url.
+[server/michelin3.js](server/michelin3.js) contains a function to scrape a given Michelin restaurant url.
 
 To start the example, use the Makefile target or call with node cli:
 

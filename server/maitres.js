@@ -66,6 +66,7 @@ module.exports.scrapeRestaurant = async page => {
  * Get all France located Bib Gourmand restaurants
  * @return {Array} restaurants
  */
+
 module.exports.get = () => {
     return [];
 };

@@ -1,0 +1,33 @@
+th {
+    font-size: 18pt;
+    color: blueviolet;
+}
+
+td {
+    font-size: 14pt;
+    color: black;
+    width: 50%;
+}
+
+tr {
+    align: center;
+}
+
+table {
+    width: 100%;
+}
+
+#wrapper {
+    border: 1px solid blue;
+}
+#div1 {
+    vertical-align: top;
+    display: inline-block;
+    width:50%;
+}
+#div2 {
+    display: inline-block;
+    width:50%;
+
+}
+
